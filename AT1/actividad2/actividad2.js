@@ -12,8 +12,11 @@ let posicionC2 ="";
 let posicionFinal = "";
 
 
+if (n1 === n2 && n2 === n3 && n3 === n4 && n4 === n5) {
+    alert("los numeros son iguales");
+} else {
 
-if (candidato1 < n3){
+    if (candidato1 < n3) {
     candidato1 = n3;
     posicionC1 = "tercero";
 } else{
@@ -40,3 +43,6 @@ if (mayor < n1){
 }
 
 alert("el numero mas alto es el: " + posicionFinal + " ("+mayor+")")
+}
+
+
