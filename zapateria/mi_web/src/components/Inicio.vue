@@ -1,3 +1,9 @@
+<script setup>
+    import { ref } from 'vue';
+    import Detalle from './detalle.vue';
+
+    const mostrarDetalle = ref(false);
+</script>
 <template>
     <section id="inicio" class="hero">
         <div>
@@ -7,8 +13,12 @@
             <a href="#modelos">Ver modelos</a>
         </div>
         <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80"
-            alt="Zapatillas deportivas blancas">
+            alt="Zapatillas deportivas blancas"
+            class="clickable"
+            @click="mostrarDetalle = true"
+            >
     </section>
+    <Detalle :visible="mostrarDetalle" @cerrar="mostrarDetalle=false"></Detalle>
 </template>
 <style scoped>
 .hero {
@@ -23,6 +33,10 @@
 .hero img {
     width: 100%;
     border-radius: 18px;
+}
+
+.clickable {
+    cursor: pointer;    
 }
 
 .hero a {
