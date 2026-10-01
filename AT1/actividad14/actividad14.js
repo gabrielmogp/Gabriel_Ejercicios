@@ -4,7 +4,7 @@ let notas = [String(prompt("Introduce las notas del primer trimestre:")).split("
 String(prompt("Introduce las notas del tercer trimestre:"))];
 let resultados = [];
 var aprobado = true;
-var log =notas +"";
+var log =notas +"\n";
 
 for(let i = 0 ; i<notas.length ; i ++){
     var tieneRecuperacion = notas[i][3] != 0;
