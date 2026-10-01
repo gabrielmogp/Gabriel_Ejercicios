@@ -9,63 +9,86 @@ const modelos = [
     {
         id: 0,
         nombre: 'Urban Flow',
-        precioTalla: [79.99, 89.99, 99.99],
         imgs: ['https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80',
             'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
         alt: ['imagen anverso', 'imagen reverso'],
-        descripcion: 'Camiseta 1, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        cantidad: [5, 4, 7]
+        descripcion: 'Camiseta 1, descripcion 1.',
+        talla: {
+            x: { precio: 79.99, cantidad: 5 },
+            m: { precio: 89.99, cantidad: 4 },
+            l: { precio: 99.99, cantidad: 7 }
+        }
 
     },
     {
         id: 1,
         nombre: 'Trail Force',
-        precioTalla: [59.99, 69.99, 79.99],
         imgs: ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80',
             'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80'],
         alt: ['imagen anverso', 'imagen reverso'],
-        descripcion: 'Camiseta 2, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        cantidad: [5, 4, 7]
+        descripcion: 'Camiseta 2, descripcion 2.',
+        talla: {
+            x: { precio: 59.99, cantidad: 5 },
+            m: { precio: 69.99, cantidad: 4 },
+            l: { precio: 79.99, cantidad: 7 }
+        }
+
     },
     {
         id: 2,
         nombre: 'Sprint One',
-        precioTalla: [94.99, 104.99, 114.99],
         imgs: ['https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=900&q=80',
             'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
         alt: ['imagen anverso', 'imagen reverso'],
-        descripcion: 'Camiseta 3, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        cantidad: [5, 4, 7]
+        descripcion: 'Camiseta 3, descripcion 3.',
+        talla: {
+            x: { precio: 94.99, cantidad: 5 },
+            m: { precio: 104.99, cantidad: 4 },
+            l: { precio: 114.99, cantidad: 7 }
+        }
+
     },
     {
         id: 3,
         nombre: 'Cloud Step',
-        precioTalla: [89.99, 99.99, 109.99],
         imgs: ['https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80',
             'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
         alt: ['imagen anverso', 'imagen reverso'],
-        descripcion: 'Camiseta 4, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        cantidad: [5, 4, 7]
+        descripcion: 'Camiseta 4, descripcion 4.',
+        talla: {
+            x: { precio: 89.99, cantidad: 5 },
+            m: { precio: 99.99, cantidad: 4 },
+            l: { precio: 109.99, cantidad: 7 }
+        }
+
     },
     {
         id: 4,
         nombre: 'Street Flex',
-        precioTalla: [99.99, 109.99, 119.99],
         imgs: ['https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=900&q=80',
             'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
         alt: ['imagen anverso', 'imagen reverso'],
-        descripcion: 'Camiseta 5, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        cantidad: [5, 4, 7]
+        descripcion: 'Camiseta 5, descripcion 5.',
+        talla: {
+            x: { precio: 99.99, cantidad: 5 },
+            m: { precio: 19.99, cantidad: 4 },
+            l: { precio: 119.99, cantidad: 7 }
+        }
+
     },
     {
         id: 5,
         nombre: 'City Runner',
-        precioTalla: [84.99, 94.99, 104.99],
         imgs: ['https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80',
             'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
         alt: ['imagen anverso', 'imagen reverso'],
-        descripcion: 'Camiseta 6, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        cantidad: [5, 4, 7]
+        descripcion: 'Camiseta 6, descripcion 6.',
+        talla: {
+            x: { precio: 79.99, cantidad: 5 },
+            m: { precio: 89.99, cantidad: 4 },
+            l: { precio: 99.99, cantidad: 7 }
+        }
+
     }
 ]
 </script>
@@ -81,8 +104,8 @@ const modelos = [
                     <img :src="modelo.imgs[0]" :alt="modelo.alt[0]">
                     <div class="info">
                         <h4>{{ modelo.nombre }}</h4>
-                        <strong>Desde {{ modelo.precioTalla[0].toString() }} EUR</strong>
-                        <button class="comprar" @click="mostrarDetalle=true , modeloSeleccionado = modelo.id">Comprar</button>
+                        <strong>Desde {{ modelo.talla.x.precio }} EUR</strong>
+                        <button class="boton" @click="mostrarDetalle=true , modeloSeleccionado = modelo.id">Comprar</button>
                     </div>
                     
                 </li>
@@ -114,7 +137,7 @@ h3 {
      color: #2563eb;
 }
 
-.comprar {
+.boton {
     background: #2563eb;
     color: #172033;
     border: 1px solid #2563eb;

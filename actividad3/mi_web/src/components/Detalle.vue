@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 defineProps({
     visible: {
         type: Boolean,
@@ -11,24 +12,33 @@ defineProps({
 })
 defineEmits(['cerrar'])
 
+function cambiar(a){
+ if (a === 0) return 1;
+ if (a === 1) return 0;
+}
+const imagenMostrada = ref(cambiar(0));
+
 </script>
 
     
 <template>
     <div v-if="visible" class="fondo" @click.self="$emit('cerrar')">
         <article class="tarjeta">
-            <img :src="modelo.imgs[0]" :alt="modelo.alt[0]">
+            <img :src="modelo.imgs[imagenMostrada]" :alt="modelo.alt[imagenMostrada]">
             <div class="info">
-                <p class="etiqueta">NUESTRAS CAMISETAS</p>
                 <h3>{{modelo.nombre}}</h3>
-                <p>Zapatillas ligeras, comodas y preparadas para tu ritmo.</p>
-                <strong>99,99 EUR</strong>
+                <p>{{ modelo.descripcion }}</p>
+                <strong>Nuestras tallas</strong>
                 <ul>
-                    <li>Parte superior transpirable</li>
-                    <li>Suela con amortiguacion</li>
-                    <li>Tallas 36 a 46</li>
+                    <li>{{modelo.talla.x.precio}}</li>
+                    <li>{{modelo.talla.m.precio}}</li>
+                    <li>{{modelo.talla.l.precio}}</li>
                 </ul>
+                <div class="contenedorBtns">
+                <button >Añadir</button>
                 <button @click="$emit('cerrar')">Cerrar</button>
+                </div>
+                
             </div>
         </article>
     </div>
@@ -92,11 +102,27 @@ ul {
 
 button {
     background: #2563eb;
-    color: white;
-    border: none;
-    padding: 12px 20px;
+    color: #172033;
+    border: 1px solid #2563eb;
+    padding: 8px 16px;
     cursor: pointer;
-    align-self: flex-start;
+    width: 100%;
+    margin: auto;
+
+        
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #eeeef0;
+}
+
+
+/* IMPORTANTE, TODO CSS */
+.contenedorBtns { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
 }
 
 @media (max-width: 650px) {
