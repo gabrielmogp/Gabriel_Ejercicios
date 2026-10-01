@@ -6,16 +6,6 @@
 
 ## To Do
 
-#### Detalle
-<!-- id: task-1790768280852-18 -->
-Muestra la foto por delante y por detras. Aemas. se puede seleccionar la tall.
-- [ ] Dibujar el detalle con foto, etc.
-- [ ] Emision evento añadir al carrito
-- [ ] captura de event mostra camiseta
-- [ ] reflejar la disponibillidad de camisetas por talla
-<!-- workload: hard -->
-<!-- assignee: Gabriel -->
-
 #### Carrito
 <!-- id: task-1790768685671-31 -->
 Tiene una lista de camisetas que vamos a comprar.
@@ -27,6 +17,16 @@ Tiene una lista de camisetas que vamos a comprar.
 <!-- assignee: Gabriel -->
 
 ## In Progress
+
+#### Detalle
+<!-- id: task-1790768280852-18 -->
+Muestra la foto por delante y por detras. Aemas. se puede seleccionar la tall.
+- [x] Dibujar el detalle con foto, etc.
+- [ ] Emision evento añadir al carrito
+- [ ] captura de event mostra camiseta
+- [ ] reflejar la disponibillidad de camisetas por talla
+<!-- workload: hard -->
+<!-- assignee: Gabriel -->
 
 ## Done
 

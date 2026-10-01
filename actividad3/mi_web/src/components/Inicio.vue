@@ -1,80 +1,93 @@
 <script setup>
+import { ref } from 'vue';
+import Detalle from './Detalle.vue';
 
-defineEmits(['comprar'])
+    const mostrarDetalle = ref(false);
+    const modeloSeleccionado = ref(0);
 
 const modelos = [
     {
-        id: 1,
+        id: 0,
         nombre: 'Urban Flow',
         precioTalla: [79.99, 89.99, 99.99],
-        imagenAnverso: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80',
-        imagenReverso: ' ',
+        imgs: ['https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80',
+            'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
+        alt: ['imagen anverso', 'imagen reverso'],
+        descripcion: 'Camiseta 1, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         cantidad: [5, 4, 7]
 
     },
     {
-        id: 2,
+        id: 1,
         nombre: 'Trail Force',
         precioTalla: [59.99, 69.99, 79.99],
-        imagenAnverso: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80',
-        imagenReverso: ' ',
+        imgs: ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80',
+            'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80'],
+        alt: ['imagen anverso', 'imagen reverso'],
+        descripcion: 'Camiseta 2, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        cantidad: [5, 4, 7]
+    },
+    {
+        id: 2,
+        nombre: 'Sprint One',
+        precioTalla: [94.99, 104.99, 114.99],
+        imgs: ['https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=900&q=80',
+            'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
+        alt: ['imagen anverso', 'imagen reverso'],
+        descripcion: 'Camiseta 3, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         cantidad: [5, 4, 7]
     },
     {
         id: 3,
-        nombre: 'Sprint One',
-        precioTalla: [94.99, 104.99, 114.99],
-        imagenAnverso: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=900&q=80',
-        imagenReverso: ' ',
+        nombre: 'Cloud Step',
+        precioTalla: [89.99, 99.99, 109.99],
+        imgs: ['https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80',
+            'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
+        alt: ['imagen anverso', 'imagen reverso'],
+        descripcion: 'Camiseta 4, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         cantidad: [5, 4, 7]
     },
     {
         id: 4,
-        nombre: 'Cloud Step',
-        precioTalla: [89.99, 99.99, 109.99],
-        imagenAnverso: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80',
-        imagenReverso: ' ',
+        nombre: 'Street Flex',
+        precioTalla: [99.99, 109.99, 119.99],
+        imgs: ['https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=900&q=80',
+            'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
+        alt: ['imagen anverso', 'imagen reverso'],
+        descripcion: 'Camiseta 5, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         cantidad: [5, 4, 7]
     },
     {
         id: 5,
-        nombre: 'Street Flex',
-        precioTalla: [99.99, 109.99, 119.99],
-        imagenAnverso: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=900&q=80',
-        imagenReverso: ' ',
-        cantidad: [5, 4, 7]
-    },
-    {
-        id: 6,
         nombre: 'City Runner',
         precioTalla: [84.99, 94.99, 104.99],
-        imagenAnverso: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80',
-        imagenReverso: ' ',
+        imgs: ['https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=900&q=80',
+            'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80'],
+        alt: ['imagen anverso', 'imagen reverso'],
+        descripcion: 'Camiseta 6, lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         cantidad: [5, 4, 7]
     }
 ]
 </script>
 
-<template>
-    
-       
-            <header class="cab-mod">
+<template>  
+            <header class="cab-mod" id="modelos">
                 <div>
                     <h3>Nuestras camisetas</h3>
                 </div>
             </header>
             <ul class="lista">
                 <li v-for="modelo in modelos" :key="modelo.nombre" class="modelo">
-                    <img :src="modelo.imagenAnverso" :alt="modelo.nombre">
+                    <img :src="modelo.imgs[0]" :alt="modelo.alt[0]">
                     <div class="info">
                         <h4>{{ modelo.nombre }}</h4>
                         <strong>Desde {{ modelo.precioTalla[0].toString() }} EUR</strong>
-                        <button class="comprar" @click="$emit('comprar')">Comprar</button>
+                        <button class="comprar" @click="mostrarDetalle=true , modeloSeleccionado = modelo.id">Comprar</button>
                     </div>
                     
                 </li>
             </ul>
-        
+            <Detalle :visible="mostrarDetalle" :modelo=modelos[modeloSeleccionado] @cerrar="mostrarDetalle=false"></Detalle>
 </template>
 
 <style scoped>
