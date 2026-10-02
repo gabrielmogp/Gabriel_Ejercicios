@@ -16,36 +16,42 @@ function cambiarImg(a){
  if (a === 0) return 1;
  if (a === 1) return 0;
 }
-const imagenMostrada = ref(0);
+
+modelo.talla.x.cantidad;
+function comprar(){
+    
+}
+
+const indiceImg = ref(0);
 
 </script>
 
     
 <template>
-    <div v-if="visible" class="fondo" @click.self="$emit('cerrar'), imagenMostrada = 0">
+    <div v-if="visible" class="fondo" @click.self="$emit('cerrar'), indiceImg = 0">
         <article class="tarjeta">
-            <img :src="modelo.imgs[imagenMostrada]" :alt="modelo.alt[imagenMostrada]" @click.self="imagenMostrada= cambiarImg(imagenMostrada)">
+            <img :src="modelo.imgs[indiceImg]" :alt="modelo.alt[indiceImg]" @click.self="indiceImg= cambiarImg(indiceImg)">
             <div class="info">
                 <h3>{{modelo.nombre}}</h3>
                 <p>{{ modelo.descripcion }}</p>
-                <strong>Nuestras tallas</strong>
+                <strong>Seleccione una talla</strong>
                 <div>
-                    <div class="tallas">
-                        <p>S</p>
+                    <button  class="tallas">
+                        <p>S hay {{modelo.talla.x.cantidad}}</p>
                         <p>{{modelo.talla.x.precio}} €</p> 
-                    </div>
-                    <div class="tallas">
-                        <p>M</p>
+                    </button >
+                    <button  class="tallas">
+                        <p>M hay {{modelo.talla.m.cantidad}}</p>
                         <p>{{modelo.talla.m.precio}} €</p>
-                    </div>
-                    <div class="tallas">
-                        <p>L</p>
+                    </button >
+                    <button  class="tallas">
+                        <p>L hay {{modelo.talla.l.cantidad}}</p>
                         <p>{{modelo.talla.l.precio}} €</p>
-                    </div>
+                    </button >
                 </div>
                 <div class="contenedorBtns">
-                <button >Añadir</button>
-                <button @click="$emit('cerrar'), imagenMostrada = 0">Cancelar</button> // Botón para cerrar el modal y resetear la imagen mostrada
+                <button @click="comprar">Añadir</button>
+                <button @click="$emit('cerrar'), indiceImg = 0">Cancelar</button> <!-- Botón para cerrar el modal y resetear la imagen mostrada -->
                 </div>
                 
             </div>
