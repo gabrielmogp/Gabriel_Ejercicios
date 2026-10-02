@@ -12,31 +12,40 @@ defineProps({
 })
 defineEmits(['cerrar'])
 
-function cambiar(a){
+function cambiarImg(a){
  if (a === 0) return 1;
  if (a === 1) return 0;
 }
-const imagenMostrada = ref(cambiar(0));
+const imagenMostrada = ref(0);
 
 </script>
 
     
 <template>
-    <div v-if="visible" class="fondo" @click.self="$emit('cerrar')">
+    <div v-if="visible" class="fondo" @click.self="$emit('cerrar'), imagenMostrada = 0">
         <article class="tarjeta">
-            <img :src="modelo.imgs[imagenMostrada]" :alt="modelo.alt[imagenMostrada]">
+            <img :src="modelo.imgs[imagenMostrada]" :alt="modelo.alt[imagenMostrada]" @click.self="imagenMostrada= cambiarImg(imagenMostrada)">
             <div class="info">
                 <h3>{{modelo.nombre}}</h3>
                 <p>{{ modelo.descripcion }}</p>
                 <strong>Nuestras tallas</strong>
-                <ul>
-                    <li>{{modelo.talla.x.precio}}</li>
-                    <li>{{modelo.talla.m.precio}}</li>
-                    <li>{{modelo.talla.l.precio}}</li>
-                </ul>
+                <div>
+                    <div class="tallas">
+                        <p>S</p>
+                        <p>{{modelo.talla.x.precio}} €</p> 
+                    </div>
+                    <div class="tallas">
+                        <p>M</p>
+                        <p>{{modelo.talla.m.precio}} €</p>
+                    </div>
+                    <div class="tallas">
+                        <p>L</p>
+                        <p>{{modelo.talla.l.precio}} €</p>
+                    </div>
+                </div>
                 <div class="contenedorBtns">
                 <button >Añadir</button>
-                <button @click="$emit('cerrar')">Cerrar</button>
+                <button @click="$emit('cerrar'), imagenMostrada = 0">Cancelar</button> // Botón para cerrar el modal y resetear la imagen mostrada
                 </div>
                 
             </div>
@@ -117,12 +126,30 @@ button {
 }
 
 
+
 /* IMPORTANTE, TODO CSS */
 .contenedorBtns { 
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
+}
+
+.tallas {
+    background: #eff6ff;
+    border-radius: 12px;
+    padding: 8px 16px;
+    margin: 4px 0;
+    font-weight: bold;
+    color: #2563eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.tallas p {
+    margin: 0;
 }
 
 @media (max-width: 650px) {

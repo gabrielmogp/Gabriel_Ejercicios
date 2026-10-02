@@ -23,7 +23,7 @@ Tiene una lista de camisetas que vamos a comprar.
 Muestra la foto por delante y por detras. Aemas. se puede seleccionar la tall.
 - [x] Dibujar el detalle con foto, etc.
 - [ ] Emision evento añadir al carrito
-- [ ] captura de event mostra camiseta
+- [x] captura de event mostra camiseta
 - [ ] reflejar la disponibillidad de camisetas por talla
 <!-- workload: hard -->
 <!-- assignee: Gabriel -->
