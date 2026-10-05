@@ -14,7 +14,7 @@ const modelos = [
         alt: ['imagen anverso', 'imagen reverso'],
         descripcion: 'Camiseta 1, descripcion 1.',
         talla: {
-            x: { precio: 79.99, cantidad: 5 },
+            s: { precio: 79.99, cantidad: 5 },
             m: { precio: 89.99, cantidad: 4 },
             l: { precio: 99.99, cantidad: 7 }
         }
@@ -28,7 +28,7 @@ const modelos = [
         alt: ['imagen anverso', 'imagen reverso'],
         descripcion: 'Camiseta 2, descripcion 2.',
         talla: {
-            x: { precio: 59.99, cantidad: 5 },
+            s: { precio: 59.99, cantidad: 5 },
             m: { precio: 69.99, cantidad: 4 },
             l: { precio: 79.99, cantidad: 7 }
         }
@@ -42,7 +42,7 @@ const modelos = [
         alt: ['imagen anverso', 'imagen reverso'],
         descripcion: 'Camiseta 3, descripcion 3.',
         talla: {
-            x: { precio: 94.99, cantidad: 5 },
+            s: { precio: 94.99, cantidad: 5 },
             m: { precio: 104.99, cantidad: 4 },
             l: { precio: 114.99, cantidad: 7 }
         }
@@ -56,7 +56,7 @@ const modelos = [
         alt: ['imagen anverso', 'imagen reverso'],
         descripcion: 'Camiseta 4, descripcion 4.',
         talla: {
-            x: { precio: 89.99, cantidad: 5 },
+            s: { precio: 89.99, cantidad: 5 },
             m: { precio: 99.99, cantidad: 4 },
             l: { precio: 109.99, cantidad: 7 }
         }
@@ -70,7 +70,7 @@ const modelos = [
         alt: ['imagen anverso', 'imagen reverso'],
         descripcion: 'Camiseta 5, descripcion 5.',
         talla: {
-            x: { precio: 99.99, cantidad: 5 },
+            s: { precio: 99.99, cantidad: 5 },
             m: { precio: 19.99, cantidad: 4 },
             l: { precio: 119.99, cantidad: 7 }
         }
@@ -84,7 +84,7 @@ const modelos = [
         alt: ['imagen anverso', 'imagen reverso'],
         descripcion: 'Camiseta 6, descripcion 6.',
         talla: {
-            x: { precio: 79.99, cantidad: 5 },
+            s: { precio: 79.99, cantidad: 5 },
             m: { precio: 89.99, cantidad: 4 },
             l: { precio: 99.99, cantidad: 7 }
         }
@@ -104,7 +104,7 @@ const modelos = [
                     <img :src="modelo.imgs[0]" :alt="modelo.alt[0]">
                     <div class="info">
                         <h4>{{ modelo.nombre }}</h4>
-                        <strong>Desde {{ modelo.talla.x.precio }} EUR</strong>
+                        <strong>Desde {{ modelo.talla.s.precio }} EUR</strong>
                         <button class="boton" @click="mostrarDetalle=true , modeloSeleccionado = modelo.id">Comprar</button>
                     </div>
                     

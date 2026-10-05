@@ -17,12 +17,17 @@ function cambiarImg(a){
  if (a === 1) return 0;
 }
 
-modelo.talla.x.cantidad;
 function comprar(){
+    tallaSeleccionada = null;   
+}
+
+function cerrar(){
     
+    tallaSeleccionada = 0;
 }
 
 const indiceImg = ref(0);
+const tallaSeleccionada = ref(null);
 
 </script>
 
@@ -36,22 +41,22 @@ const indiceImg = ref(0);
                 <p>{{ modelo.descripcion }}</p>
                 <strong>Seleccione una talla</strong>
                 <div>
-                    <button  class="tallas">
-                        <p>S hay {{modelo.talla.x.cantidad}}</p>
-                        <p>{{modelo.talla.x.precio}} €</p> 
+                    <button class="tallas" :class="{ seleccionada: tallaSeleccionada == 's' }" @click="tallaSeleccionada = 's'">
+                        <p>S hay {{modelo.talla.s.cantidad}}</p>
+                        <p>{{modelo.talla.s.precio}} €</p> 
                     </button >
-                    <button  class="tallas">
+                    <button class="tallas" :class="{ seleccionada: tallaSeleccionada == 'm' }" @click="tallaSeleccionada = 'm'">
                         <p>M hay {{modelo.talla.m.cantidad}}</p>
                         <p>{{modelo.talla.m.precio}} €</p>
                     </button >
-                    <button  class="tallas">
+                    <button class="tallas" :class="{ seleccionada: tallaSeleccionada == 'l' }" @click="tallaSeleccionada = 'l'">
                         <p>L hay {{modelo.talla.l.cantidad}}</p>
                         <p>{{modelo.talla.l.precio}} €</p>
                     </button >
                 </div>
                 <div class="contenedorBtns">
-                <button @click="comprar">Añadir</button>
-                <button @click="$emit('cerrar'), indiceImg = 0">Cancelar</button> <!-- Botón para cerrar el modal y resetear la imagen mostrada -->
+                <button @click=" $emit('cerrar'), comprar(modelo)">Añadir</button>
+                <button @click="$emit('cerrar'), cerrar()">Cancelar</button> 
                 </div>
                 
             </div>
@@ -156,6 +161,11 @@ button {
 
 .tallas p {
     margin: 0;
+}
+
+.tallas.seleccionada {
+    background: #2563eb;
+    color: #fff;
 }
 
 @media (max-width: 650px) {
