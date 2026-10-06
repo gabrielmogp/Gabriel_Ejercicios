@@ -11,7 +11,7 @@ defineProps({
     },
     cesta:{
         type: Object,
-        default: null
+        default: ()=>[]
     } 
 })
 const emit = defineEmits(['cerrar'])

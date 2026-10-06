@@ -1,10 +1,9 @@
 <script setup>
-  defineProps({
-    CestaVisible: {
-        type: Boolean,
-        default: false
-    }
-    
+defineProps({
+  cantidadCesta: {
+    type: Number,
+    default: 0
+  }
 })
 </script>
 <template>
@@ -12,7 +11,7 @@
     <a class="marca" href="#inicio">Las Camisetas de Manuel</a>
     <nav><a href="#modelos">Modelos</a><a href="#contacto">Contacto</a></nav>
     
-    <button class="cerrar" @click="$emit('cerrar')">Cesta</button>
+    <button @click="$emit('mostrarCesta')">Cesta ({{ cantidadCesta }})</button>
 
   </header>
 </template>
@@ -37,18 +36,20 @@ nav a {
   margin-left: 20px;
   text-decoration: none;
 
-  .cerrar {
+  button {
     background: #2563eb;
     color: #172033;
     border: 1px solid #2563eb;
     padding: 8px 16px;
     cursor: pointer;
+    width: 100%;
+    margin: auto;
 
         
     border-radius: 12px;
     font-weight: bold;
     font-size: 16px;
     color: #eeeef0;
-}
+  }
 }
 </style>

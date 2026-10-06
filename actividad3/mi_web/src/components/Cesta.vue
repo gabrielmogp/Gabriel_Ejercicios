@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 defineProps({
     visible: {
         type: Boolean,
@@ -7,20 +6,34 @@ defineProps({
     },
     cesta: {
         type: Object,
-        default: null
+        default: ()=>[]
+    },
+    modelos: {
+        type: Array,
+        default: () => []
     }
 })
 const emit = defineEmits(['cerrar'])
 
 
 
-function calcularPrecioTotal(cesta){
+function formateoPrecioTotal(cesta){
+    if(!cesta || cesta.length === 0) {
+        return "La cesta está vacía";
+    }
     var total = 0;
     for (let i = 0; i < cesta.length; i++) {
         total += cesta[i].precio;
     }
-    return total;
+    return "precio total: " + total.toFixed(2) + " €";
 }
+
+function eliminarItem(cesta, itemCesta, modelos){
+    modelos[itemCesta.id].talla[itemCesta.talla].cantidad++;
+    cesta.splice(cesta.indexOf(itemCesta), 1);
+    
+}
+
 
 </script>
 
@@ -31,13 +44,19 @@ function calcularPrecioTotal(cesta){
             <h2>Cesta</h2>
             <div class="info">
                 
-                <div v-for="modelo in cesta" :key="modelo.nombre" >
+                <div v-for="itemCesta in cesta" :key="itemCesta.nombre" >
                     <div class="item">
-                        <p>{{ modelo.id }}, {{ modelo.talla }}, {{ modelo.precio }} €</p>
+                        <img :src="itemCesta.imgs[0]">
+                        <p>{{ itemCesta.nombre }}, {{ itemCesta.talla.toUpperCase() }}</p>
+                        <strong>precio: {{ itemCesta.precio }} €</strong>
+                        <button class="boton" @click="eliminarItem(cesta, itemCesta, modelos)">Eliminar</button>
                     </div>
                     
                 </div>
-                <p>Precio total: {{ calcularPrecioTotal(cesta).toFixed(2) }} €</p>
+                <div class="pie">
+                    <p>{{ formateoPrecioTotal(cesta) }}</p>
+                    <button>Finalizar compra</button>
+                </div>
             </div>
         </article>
     </div>
@@ -60,26 +79,69 @@ function calcularPrecioTotal(cesta){
 }
 
 .tarjeta {
-    width: 40%;
-    height: 40%;
+    width: min(40%, 740px);
+    max-width: 490px;
+    max-height: 60vh;
     background: white;
     border-radius: 18px;
-    max-width: 740px;
-    max-height: 60%;
     overflow: hidden;
-    display: grid;
+    display: flex;
+    flex-direction: column;
 }
+
+h2 {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    color: #2563eb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.info {
+    overflow-y: auto;
+    padding: 1rem 1.25rem;
+    flex: 1;
+}
+
 .item {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
+    background-color: #e5e7eb;
+    border-radius: 12px;
+    margin: 12px;
 }
 
+.pie {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
 
+button {
+    background: #2563eb;
+    color: #172033;
+    border: 1px solid #2563eb;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin: auto;
+
+        
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #eeeef0;
+
+}
+img {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    padding: 6px;
+}
 @media (max-width: 650px) {
     .tarjeta {
-        grid-template-columns: 1fr;
+        width: min(90vw, 740px);
     }
 }
 </style>
