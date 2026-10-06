@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from 'vue';
 import Detalle from './Detalle.vue';
+import Cesta from './Cesta.vue';
 
-    const mostrarDetalle = ref(false);
-    const modeloSeleccionado = ref(0);
+const mostrarDetalle = ref(false);
+const mostrarCesta = ref(false);
+const modeloSeleccionado = ref(0);
+const cesta = [];
 
-    
 const modelos = [
     {
         id: 0,
@@ -111,7 +113,9 @@ const modelos = [
                     
                 </li>
             </ul>
-            <Detalle :visible="mostrarDetalle" :modelo=modelos[modeloSeleccionado] @cerrar="mostrarDetalle=false"></Detalle>
+            <Detalle :visible="mostrarDetalle" :modelo=modelos[modeloSeleccionado] :cesta = cesta @cerrar="mostrarDetalle=false"></Detalle>
+            <Cesta :visible="mostrarCesta" :cesta="cesta" @cerrar="mostrarCesta=false"></Cesta>
+            <button @click="mostrarCesta=true"">aaaa</button>
 </template>
 
 <style scoped>

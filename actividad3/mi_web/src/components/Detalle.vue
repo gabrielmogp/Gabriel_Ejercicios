@@ -8,10 +8,15 @@ defineProps({
     modelo: {
         type: Object,
         default: null
-    }
+    },
+    cesta:{
+        type: Object,
+        default: null
+    } 
 })
 const emit = defineEmits(['cerrar'])
-
+const indiceImg = ref(0);
+const tallaSeleccionada = ref(null);
 
 function cambiarImg(a){
  if (a === 0) return 1;
@@ -24,21 +29,25 @@ function cerrarModal(){
     tallaSeleccionada.value = null;
 }
 
-function comprar(modelo){
+function comprar(modelo, cesta){
     if(tallaSeleccionada.value!= null && modelo.talla[tallaSeleccionada.value].cantidad>0) {
     
         modelo.talla[tallaSeleccionada.value].cantidad --;
-        cerrarModal();
-        
+        cesta.push({
+            id : modelo.id,
+            nombre: modelo.nombre,
+            talla: tallaSeleccionada.value,
+            precio: modelo.talla[tallaSeleccionada.value].precio,
+            imgs: modelo.imgs,
+            alt: modelo.alt
+        });
+        cerrarModal();        
     }else{
         alert("Seleccione una talla."); //redundante pero por si acaso
     }
-    
+    console.log(cesta);
 }
 
-
-const indiceImg = ref(0);
-const tallaSeleccionada = ref(null);
 
 </script>
 
@@ -66,7 +75,7 @@ const tallaSeleccionada = ref(null);
                     </button >
                 </div>
                 <div class="contenedorBtns">
-                <button :disabled="!tallaSeleccionada" @click="comprar(modelo)">Añadir</button>
+                <button :disabled="!tallaSeleccionada" @click="comprar(modelo, cesta)">Añadir</button>
                 <button @click="cerrarModal">Cancelar</button> 
                 </div>
                 

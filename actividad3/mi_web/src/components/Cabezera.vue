@@ -1,4 +1,11 @@
 <script setup>
+  defineProps({
+    CestaVisible: {
+        type: Boolean,
+        default: false
+    }
+    
+})
 </script>
 <template>
   <header class="cabecera">

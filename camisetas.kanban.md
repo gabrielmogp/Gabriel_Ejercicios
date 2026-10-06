@@ -6,6 +6,8 @@
 
 ## To Do
 
+## In Progress
+
 #### Carrito
 <!-- id: task-1790768685671-31 -->
 Tiene una lista de camisetas que vamos a comprar.
@@ -13,18 +15,6 @@ Tiene una lista de camisetas que vamos a comprar.
 - [ ] Boton de eliminacion de camisetas.
 - [ ] agrupar por talla
 <!-- priority: low -->
-<!-- workload: hard -->
-<!-- assignee: Gabriel -->
-
-## In Progress
-
-#### Detalle
-<!-- id: task-1790768280852-18 -->
-Muestra la foto por delante y por detras. Aemas. se puede seleccionar la tall.
-- [x] Dibujar el detalle con foto, etc.
-- [ ] Emision evento añadir al carrito
-- [x] captura de event mostra camiseta
-- [x] reflejar la disponibillidad de camisetas por talla
 <!-- workload: hard -->
 <!-- assignee: Gabriel -->
 
@@ -46,4 +36,14 @@ Es la estructura general, con cabecera, cuerpo y pie
 - [x] Pie
 - [x] Estructura contenedora del esqueleto
 <!-- priority: high -->
+<!-- assignee: Gabriel -->
+
+#### Detalle
+<!-- id: task-1790768280852-18 -->
+Muestra la foto por delante y por detras. Aemas. se puede seleccionar la tall.
+- [x] Dibujar el detalle con foto, etc.
+- [x] Emision evento añadir al carrito
+- [x] captura de event mostra camiseta
+- [x] reflejar la disponibillidad de camisetas por talla
+<!-- workload: hard -->
 <!-- assignee: Gabriel -->
