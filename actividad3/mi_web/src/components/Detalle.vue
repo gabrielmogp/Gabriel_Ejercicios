@@ -6,25 +6,36 @@ defineProps({
         default: false
     },
     modelo: {
-        type: Array,
+        type: Object,
         default: null
     }
 })
-defineEmits(['cerrar'])
+const emit = defineEmits(['cerrar'])
+
 
 function cambiarImg(a){
  if (a === 0) return 1;
  if (a === 1) return 0;
 }
 
-function comprar(){
-    tallaSeleccionada = null;   
+function cerrarModal(){ 
+    emit('cerrar');
+    indiceImg.value = 0;
+    tallaSeleccionada.value = null;
 }
 
-function cerrar(){
+function comprar(modelo){
+    if(tallaSeleccionada.value!= null && modelo.talla[tallaSeleccionada.value].cantidad>0) {
     
-    tallaSeleccionada = 0;
+        modelo.talla[tallaSeleccionada.value].cantidad --;
+        cerrarModal();
+        
+    }else{
+        alert("Seleccione una talla."); //redundante pero por si acaso
+    }
+    
 }
+
 
 const indiceImg = ref(0);
 const tallaSeleccionada = ref(null);
@@ -33,7 +44,7 @@ const tallaSeleccionada = ref(null);
 
     
 <template>
-    <div v-if="visible" class="fondo" @click.self="$emit('cerrar'), indiceImg = 0">
+    <div v-if="visible" class="fondo" @click.self="cerrarModal">
         <article class="tarjeta">
             <img :src="modelo.imgs[indiceImg]" :alt="modelo.alt[indiceImg]" @click.self="indiceImg= cambiarImg(indiceImg)">
             <div class="info">
@@ -41,22 +52,22 @@ const tallaSeleccionada = ref(null);
                 <p>{{ modelo.descripcion }}</p>
                 <strong>Seleccione una talla</strong>
                 <div>
-                    <button class="tallas" :class="{ seleccionada: tallaSeleccionada == 's' }" @click="tallaSeleccionada = 's'">
-                        <p>S hay {{modelo.talla.s.cantidad}}</p>
+                    <button class="tallas" :disabled="modelo.talla.s.cantidad == 0" :class="{ seleccionada: tallaSeleccionada == 's' }" @click="tallaSeleccionada = 's'">
+                        <p>{{ modelo.talla.s.cantidad === 0 ? '¡no quedan tallas S!' : 'S: quedan ' + modelo.talla.s.cantidad }}</p>
                         <p>{{modelo.talla.s.precio}} €</p> 
                     </button >
-                    <button class="tallas" :class="{ seleccionada: tallaSeleccionada == 'm' }" @click="tallaSeleccionada = 'm'">
-                        <p>M hay {{modelo.talla.m.cantidad}}</p>
+                    <button class="tallas" :disabled="modelo.talla.m.cantidad == 0" :class="{ seleccionada: tallaSeleccionada == 'm' }" @click="tallaSeleccionada = 'm'">
+                        <p>{{ modelo.talla.m.cantidad === 0 ? '¡no quedan tallas M!' : 'M: quedan ' + modelo.talla.m.cantidad }}</p>
                         <p>{{modelo.talla.m.precio}} €</p>
                     </button >
-                    <button class="tallas" :class="{ seleccionada: tallaSeleccionada == 'l' }" @click="tallaSeleccionada = 'l'">
-                        <p>L hay {{modelo.talla.l.cantidad}}</p>
+                    <button class="tallas" :disabled="modelo.talla.l.cantidad == 0" :class="{ seleccionada: tallaSeleccionada == 'l' }" @click="tallaSeleccionada = 'l'">
+                        <p>{{ modelo.talla.l.cantidad === 0 ? '¡no quedan tallas L!' : 'L: quedan ' + modelo.talla.l.cantidad }}</p>
                         <p>{{modelo.talla.l.precio}} €</p>
                     </button >
                 </div>
                 <div class="contenedorBtns">
-                <button @click=" $emit('cerrar'), comprar(modelo)">Añadir</button>
-                <button @click="$emit('cerrar'), cerrar()">Cancelar</button> 
+                <button :disabled="!tallaSeleccionada" @click="comprar(modelo)">Añadir</button>
+                <button @click="cerrarModal">Cancelar</button> 
                 </div>
                 
             </div>
@@ -134,6 +145,14 @@ button {
     font-weight: bold;
     font-size: 16px;
     color: #eeeef0;
+
+}
+
+:disabled {
+    background-color: #9ca3af;
+    border-color: #6b7280;
+    color: #f3f4f6;
+    opacity: 0.7;
 }
 
 

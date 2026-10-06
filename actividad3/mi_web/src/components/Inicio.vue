@@ -5,6 +5,7 @@ import Detalle from './Detalle.vue';
     const mostrarDetalle = ref(false);
     const modeloSeleccionado = ref(0);
 
+    
 const modelos = [
     {
         id: 0,

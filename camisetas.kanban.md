@@ -24,7 +24,7 @@ Muestra la foto por delante y por detras. Aemas. se puede seleccionar la tall.
 - [x] Dibujar el detalle con foto, etc.
 - [ ] Emision evento añadir al carrito
 - [x] captura de event mostra camiseta
-- [ ] reflejar la disponibillidad de camisetas por talla
+- [x] reflejar la disponibillidad de camisetas por talla
 <!-- workload: hard -->
 <!-- assignee: Gabriel -->
 
