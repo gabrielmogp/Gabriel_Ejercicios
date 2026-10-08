@@ -34,6 +34,13 @@ function eliminarItem(cesta, itemCesta, modelos){
     
 }
 
+function agruparCesta(cesta){
+    let cestaAux = [];
+    array.forEach(element => {
+        
+    });
+
+
 
 </script>
 

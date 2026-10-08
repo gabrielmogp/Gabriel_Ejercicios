@@ -9,9 +9,8 @@ defineProps({
 <template>
   <header class="cabecera">
     <a class="marca" href="#inicio">Las Camisetas de Manuel</a>
-    <nav><a href="#modelos">Modelos</a><a href="#contacto">Contacto</a></nav>
     
-    <button @click="$emit('mostrarCesta')">Cesta ({{ cantidadCesta }})</button>
+    <button class="button" @click="$emit('mostrarCesta')">Cesta ({{ cantidadCesta }})</button>
 
   </header>
 </template>
@@ -31,19 +30,15 @@ defineProps({
   text-decoration: none;
 }
 
-nav a {
-  color: #172033;
-  margin-left: 20px;
-  text-decoration: none;
 
-  button {
+
+button {
     background: #2563eb;
     color: #172033;
     border: 1px solid #2563eb;
     padding: 8px 16px;
     cursor: pointer;
-    width: 100%;
-    margin: auto;
+    
 
         
     border-radius: 12px;
@@ -51,5 +46,4 @@ nav a {
     font-size: 16px;
     color: #eeeef0;
   }
-}
 </style>

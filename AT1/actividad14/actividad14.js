@@ -1,7 +1,7 @@
 
 let notas = [String(prompt("Introduce las notas del primer trimestre:")).split(",").map(Number),
- String(prompt("Introduce las notas del segundo trimestre:")),
-String(prompt("Introduce las notas del tercer trimestre:"))];
+ String(prompt("Introduce las notas del segundo trimestre:").split(",").map(Number)),
+String(prompt("Introduce las notas del tercer trimestre:").split(",").map(Number))];
 let resultados = [];
 var aprobado = true;
 var log =notas +"\n";
