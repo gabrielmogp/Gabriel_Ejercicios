@@ -3,8 +3,11 @@
 </script>
 <template>
   <header class="cabecera">
-    <a class="marca" href="#inicio">STEPUP</a>
-    <nav><a href="#modelos" @click.prevent="$emit('abrir-modelos')"">Modelos</a><a href="#contacto">Contacto</a></nav>
+    <router-link class="marca" to="/">STEPUP</router-link>
+    <nav>
+      <router-link class="marca" to="/"  @click.prevent="$emit('abrir-modelos')">Modelos</router-link>
+      <router-link class="marca" to="/contacto">Contacto</router-link>
+    </nav>
   </header>
 </template>
 <style scoped>

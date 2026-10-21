@@ -1,10 +1,7 @@
 <script setup>
 import {ref} from 'vue'
 import Cabecera from './components/Cabecera.vue'
-import Inicio from './components/Inicio.vue'
-import Modelos from './components/Modelos.vue'
 import Pie from './components/Pie.vue'
-import Catalog from './components/catalogo.vue'
 import Catalogo from './components/catalogo.vue'
 
 const mostrarCatalogo = ref(false)
@@ -12,10 +9,7 @@ const mostrarCatalogo = ref(false)
 
 <template>
   <Cabecera @abrir-modelos="mostrarCatalogo=true"/>
-  <main>
-    <Inicio @abrir-modelos="mostrarCatalogo=true" />
-    <Modelos />
-  </main>
+  <router-view @abrir-modelos="mostrarCatalogo=true"> </router-view>
   <Pie />
 
   <Catalogo :visible="mostrarCatalogo" @cerrar="mostrarCatalogo = false"/>
