@@ -1,7 +1,10 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Cabecera from './components/Cabezera.vue'
+import Pie from './components/Pie.vue';
 </script>
 
 <template>
-  <HelloWorld />
+  <Cabecera/>
+  <router-view/>
+  <Pie/>
 </template>
